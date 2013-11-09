@@ -24,4 +24,9 @@ class Helpers(BrowserView):
         return get_settings()
 
     def enabled(self):
-        return self.settings.enabled
+        if not self.settings.enabled:
+            return False
+        ps = self.context.restrictedTraverse('@@plone_portal_state')
+        if not self.settings.anonymous and ps.anonymous():
+            return False
+        return True

@@ -18,4 +18,9 @@ class ISettings(Interface):
         default=True
     )
 
+    anonymous = schema.Bool(
+        title=u"Enable for anonymous",
+        default=False
+    )
+
 
